@@ -1,22 +1,19 @@
-from tkinter import Tk, BOTH, Canvas
+from draw_logic import Window, Point, Line, Cell, Maze
+
 
 def main():
-    pass
+    num_rows = 12
+    num_cols = 16
+    margin = 50
+    screen_x = 800
+    screen_y = 600
+    cell_size_x = (screen_x - 2 * margin) / num_cols
+    cell_size_y = (screen_y - 2 * margin) / num_rows
+    win = Window(screen_x, screen_y)
 
+    maze = Maze(margin, margin, num_rows, num_cols, cell_size_x, cell_size_y, win)
 
-class Window:
-    def __init__(self, width, height):
-        self.width = width
-        self.height = height
-        self.root = Tk()
-        self.root.title("Breadcrumb")
-        canvas = Canvas(self.root, width=self.width, height=self.height)
-        canvas.pack()
-        is_running = False
-
-    def redraw(self):
-        pass
-
+    win.wait_for_close()
 
 if __name__ == "__main__":
     main()
